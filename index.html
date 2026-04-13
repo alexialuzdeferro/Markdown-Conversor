@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Conversor Alexia Melusine - MASTER V4</title>
+    <!-- Favicon Personalizado -->
+    <link rel="icon" type="image/png" href="https://raw.githubusercontent.com/pombagiras/melusine/refs/heads/main/Al%C3%AA%20(3)%20(3)%20(1).png">
+    <!-- Biblioteca de Renderização Markdown (Marked.js) -->
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <style>
+        :root {
+            --primary-gold: #d4af37;
+            --secondary-gold: #ffd700;
+            --deep-purple: #1a0033;
+            --mid-purple: #2d0052;
+            --soft-purple: #b19cd9;
+            --text-color: #e0e0e0;
+            --bg-dark: rgba(0, 0, 0, 0.8);
+            --panel-bg: rgba(255, 255, 255, 0.05);
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            background: linear-gradient(135deg, var(--deep-purple) 0%, var(--mid-purple) 50%, var(--deep-purple) 100%);
+            background-attachment: fixed;
+            min-height: 100vh;
+            color: var(--text-color);
+            line-height: 1.6;
+            overflow-x: hidden;
+            padding: 10px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        /* Header Master */
+        header {
+            text-align: center;
+            margin-bottom: 20px;
+            padding: 25px;
+            background: var(--bg-dark);
+            border-radius: 20px;
+            border: 2px solid var(--primary-gold);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.6);
+            position: relative;
+        }
+
+        .profile-img {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            border: 3px solid var(--primary-gold);
+            margin-bottom: 15px;
+            box-shadow: 0 0 20px rgba(212, 175, 55, 0.4);
+        }
+
+        .logo {
+            font-size: 2em;
+            font-weight: 900;
+            background: linear-gradient(135deg, var(--primary-gold), var(--secondary-gold));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+        }
+
+        .signature {
+            color: var(--primary-gold);
+            font-style: italic;
+            font-size: 0.9em;
+            letter-spacing: 1px;
+            margin-top: 5px;
+        }
+
+        /* Tabs System */
+        .tabs {
+            display: flex;
+            background: var(--bg-dark);
+            border-radius: 15px;
+            margin-bottom: 20px;
+            padding: 6px;
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            gap: 5px;
+        }
+
+        .tab-btn {
+            flex: 1;
+            padding: 14px;
+            border: none;
+            background: transparent;
+            color: var(--soft-purple);
+            font-weight: bold;
+            cursor: pointer;
+            border-radius: 10px;
+            font-size: 0.95em;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+
+        .tab-btn.active {
+            background: linear-gradient(135deg, var(--primary-gold), var(--secondary-gold));
+            color: var(--deep-purple);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+        }
+
+        /* Workspace Panels */
+        .workspace {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 20px;
+        }
+
+        .panel {
+            background: var(--bg-dark);
+            border-radius: 20px;
+            border: 1px solid rgba(212, 175, 55, 0.2);
+            display: none;
+            flex-direction: column;
+            overflow: hidden;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+        }
+
+        .panel.active {
+            display: flex;
+        }
+
+        .panel-header {
+            padding: 18px 25px;
+            background: rgba(212, 175, 55, 0.15);
+            border-bottom: 1px solid rgba(212, 175, 55, 0.3);
+            font-weight: 800;
+            color: var(--primary-gold);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        textarea {
+            width: 100%;
+            height: 400px;
+            background: transparent;
+            border: none;
+            color: #fff;
+            padding: 25px;
+            font-family: 'Courier New', monospace;
+            font-size: 16px;
+            resize: none;
+            outline: none;
+            line-height: 1.5;
+        }
+
+        /* Preview Styling */
+        .preview-area {
+            height: 400px;
+            padding: 30px;
+            overflow-y: auto;
+            background: rgba(255, 255, 255, 0.02);
+            color: #fff;
+        }
+
+        .preview-area img { max-width: 100%; border-radius: 10px; margin: 15px 0; border: 2px solid var(--primary-gold); }
+        .preview-area h1, .preview-area h2 { color: var(--primary-gold); border-bottom: 1px solid var(--primary-gold); padding-bottom: 10px; margin: 20px 0 15px; }
+        .preview-area strong { color: var(--secondary-gold); }
+        .preview-area table { width: 100%; border-collapse: collapse; margin: 20px 0; }
+        .preview-area th, .preview-area td { border: 1px solid rgba(212, 175, 55, 0.3); padding: 12px; }
+        .preview-area th { background: rgba(212, 175, 55, 0.1); }
+
+        /* Floating Actions */
+        .actions {
+            position: fixed;
+            bottom: 30px;
+            right: 25px;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            z-index: 1000;
+        }
+
+        .fab {
+            width: 65px;
+            height: 65px;
+            border-radius: 32.5px;
+            background: linear-gradient(135deg, var(--primary-gold), var(--secondary-gold));
+            color: var(--deep-purple);
+            border: none;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.6em;
+            transition: var(--transition);
+        }
+
+        .fab:active { transform: scale(0.9); }
+
+        .fab-template {
+            background: linear-gradient(135deg, var(--soft-purple), #9370db);
+            color: white;
+        }
+
+        /* Status */
+        #status {
+            position: fixed;
+            top: 25px;
+            left: 50%;
+            transform: translateX(-50%);
+            padding: 12px 30px;
+            border-radius: 30px;
+            font-weight: bold;
+            z-index: 2000;
+            opacity: 0;
+            transition: opacity 0.3s;
+            pointer-events: none;
+            text-align: center;
+        }
+
+        .status-show { opacity: 1 !important; }
+        .success { background: #4CAF50; color: white; box-shadow: 0 5px 15px rgba(76,175,80,0.4); }
+        .error { background: #F44336; color: white; }
+
+        /* Desktop Mode */
+        @media (min-width: 1024px) {
+            .workspace { grid-template-columns: 1fr 1fr; }
+            .panel { display: flex !important; }
+            .tabs { display: none; }
+            .panel-preview { grid-column: span 2; margin-top: 20px; }
+            textarea, .preview-area { height: 380px; }
+        }
+
+        footer {
+            text-align: center;
+            padding: 50px 20px;
+            color: var(--soft-purple);
+            font-size: 0.9em;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <header>
+        <img src="https://raw.githubusercontent.com/pombagiras/melusine/refs/heads/main/Al%C3%AA%20(3)%20(3)%20(1).png" class="profile-img" alt="Alexia Melusine">
+        <div class="logo">ALEXIA MELUSINE</div>
+        <div class="signature">Centro de Comando de Conteúdo Visceral</div>
+    </header>
+
+    <div class="tabs">
+        <button class="tab-btn active" onclick="switchTab('inputPanel')">📥 Entrada</button>
+        <button class="tab-btn" onclick="switchTab('outputPanel')">📜 Markdown</button>
+        <button class="tab-btn" onclick="switchTab('previewPanel')">👁️ Preview</button>
+    </div>
+
+    <div class="workspace">
+        <!-- Entrada -->
+        <div class="panel active" id="inputPanel">
+            <div class="panel-header">
+                <span>📥 COLOQUE SEU TEXTO</span>
+                <button onclick="applyTemplate()" style="background:var(--primary-gold); border:none; padding:5px 10px; border-radius:5px; color:var(--deep-purple); font-weight:bold; cursor:pointer;">✨ APLICAR TEMPLATE</button>
+            </div>
+            <textarea id="inputText" placeholder="Cole seu HTML ou texto aqui..." oninput="autoProcess()"></textarea>
+        </div>
+
+        <!-- Markdown -->
+        <div class="panel" id="outputPanel">
+            <div class="panel-header">
+                <span>📜 CÓDIGO PARA REDMI MD</span>
+                <small onclick="copyCode()" style="cursor:pointer; color:var(--soft-purple)">COPIAR</small>
+            </div>
+            <textarea id="outputText" readonly placeholder="O código Markdown purificado aparecerá aqui..."></textarea>
+        </div>
+
+        <!-- Preview -->
+        <div class="panel panel-preview" id="previewPanel">
+            <div class="panel-header">
+                <span>👁️ VISUALIZAÇÃO EM TEMPO REAL</span>
+                <small style="color:var(--soft-purple)">ESTILO SUBSTACK</small>
+            </div>
+            <div class="preview-area" id="previewArea"></div>
+        </div>
+    </div>
+
+    <footer>
+        Desenvolvido com Magia e Tecnologia para 
+        <br><strong style="color:var(--primary-gold); font-style:italic;">Alexia Melusine</strong>
+        <br>© 2026 - Todos os direitos reservados
+    </footer>
+</div>
+
+<!-- Floating Actions -->
+<div class="actions">
+    <button class="fab fab-template" onclick="applyTemplate()" title="Aplicar Identidade Alexia">✨</button>
+    <button class="fab" onclick="processNow()" title="Processar Markdown">🔄</button>
+    <button class="fab" style="background:var(--soft-purple)" onclick="copyCode()" title="Copiar Tudo">📋</button>
+</div>
+
+<div id="status"></div>
+
+<script>
+    marked.setOptions({ breaks: true, gfm: true });
+
+    function vibrate() { if ("vibrate" in navigator) navigator.vibrate(40); }
+
+    function switchTab(id) {
+        vibrate();
+        document.querySelectorAll('.panel').forEach(p => p.classList.remove('active'));
+        document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+        document.getElementById(id).classList.add('active');
+        const btnIndex = id === 'inputPanel' ? 0 : (id === 'outputPanel' ? 1 : 2);
+        document.querySelectorAll('.tab-btn')[btnIndex].classList.add('active');
+    }
+
+    function autoProcess() { processNow(true); }
+
+    function processNow(silent = false) {
+        if (!silent) vibrate();
+        const input = document.getElementById('inputText').value;
+        if (!input.trim()) return;
+
+        let md = input;
+
+        // Limpeza Visceral
+        md = md.replace(/<h1[^>]*>(.*?)<\/h1>/gi, '# $1\n');
+        md = md.replace(/<h2[^>]*>(.*?)<\/h2>/gi, '## $1\n');
+        md = md.replace(/<strong[^>]*>(.*?)<\/strong>/gi, '**$1**');
+        md = md.replace(/<p[^>]*>(.*?)<\/p>/gi, '$1\n\n');
+        md = md.replace(/<br\s*\/?>/gi, '\n');
+        md = md.replace(/<[^>]*>/g, '');
+        md = md.replace(/\n\s*\n\s*\n+/g, '\n\n').trim();
+
+        document.getElementById('outputText').value = md;
+        document.getElementById('previewArea').innerHTML = marked.parse(md);
+        if (!silent) showStatus('✨ Processado!', 'success');
+    }
+
+    function applyTemplate() {
+        vibrate();
+        const currentContent = document.getElementById('inputText').value;
+        const profileImg = "https://raw.githubusercontent.com/pombagiras/melusine/refs/heads/main/Al%C3%AA%20(3)%20(3)%20(1).png";
+        
+        const template = `![Alexia Melusine](${profileImg})
+
+# ✨ Bem-vindo(a) ao meu Espaço Visceral
+
+> "A espiritualidade é a arte de transmutar sombras em poder."
+
+---
+
+${currentContent}
+
+---
+
+### 🔮 Conecte-se Comigo
+*   **Substack:** [Alexia Melusine](https://alexiamelusine.substack.com)
+*   **Instagram:** [@alexiamelusine](https://instagram.com/alexiamelusine)
+*   **Redmi MD:** [Meu Fluxo de Trabalho](https://redmimd.com)
+
+**Laroyé! Pombagira é Mojubá!**
+*Processado por Conversor Alexia Melusine*`;
+
+        document.getElementById('inputText').value = template;
+        processNow();
+        showStatus('🔮 Identidade Aplicada!', 'success');
+        switchTab('previewPanel');
+    }
+
+    function copyCode() {
+        vibrate();
+        const output = document.getElementById('outputText');
+        output.select();
+        document.execCommand('copy');
+        showStatus('📋 Código Copiado!', 'success');
+    }
+
+    function showStatus(msg, type) {
+        const s = document.getElementById('status');
+        s.textContent = msg;
+        s.className = 'status-show ' + type;
+        setTimeout(() => s.className = '', 3000);
+    }
+
+    function clearAll() {
+        vibrate();
+        document.getElementById('inputText').value = '';
+        document.getElementById('outputText').value = '';
+        document.getElementById('previewArea').innerHTML = '';
+    }
+</script>
+
+</body>
+</html>
