@@ -1,31 +1,48 @@
-🌑 Alexia Melusine | Centro de Comando Visceral
-“Transmutando sombras em código, silêncio em vibração.”
-Eu sou Alexia Melusine (também conhecida como Rosa de Fogo e Luz de Ferro). Web Developer, AI Video Director e criadora de ecossistemas digitais que unem o rigor técnico à estética abissal. Este repositório é um fragmento do meu domínio, focado na purificação de conteúdo para a web visceral.
+# 🌑 Alexia Melusine | Centro de Comando Visceral
 
-🛠️ O Conversor MASTER V4
-Este projeto é uma ferramenta de alquimia digital. Ele processa HTML bruto e o transmuta em Markdown purificado, otimizado para plataformas como Substack e GitHub.
+<p align="center">
+  <img src="https://raw.githubusercontent.com/pombagiras/melusine/refs/heads/main/Al%C3%AA%20(3)%20(3)%20(1).png" width="180" style="border-radius: 50%; border: 3px solid #d4af37; box-shadow: 0 0 20px rgba(212, 175, 55, 0.4);" alt="Alexia Melusine">
+</p>
 
-Design Mobile-First: Interface responsiva com foco em UX intuitiva.
+### *"A espiritualidade é a arte de transmutar sombras em poder."*
 
-Haptic Feedback: Integração de vibração para uma experiência tátil.
+Sou **Alexia Melusine** (Rosa de Fogo / Luz de Ferro). Web Developer, AI Video Director e criadora de conteúdo digital. Meu trabalho é a intersecção entre o código de alta performance e a estética abissal, explorando o visceral através da tecnologia e da ancestralidade.
 
-Identidade Visual: Paleta Deep Purple & Gold, refletindo a nobreza do abismo.
+---
 
-Processamento em Tempo Real: Visualização instantânea com Marked.js.
+## 🛠️ O Conversor MASTER V4
+Este repositório abriga uma ferramenta de **purificação de dados**, projetada para transmutar HTML em Markdown limpo e pronto para distribuição.
 
-🔮 Ecossistema & Conexões
-Navegue pelos meus portais e falanges digitais:
+* **Estética:** Deep Purple & Gold (Gothic-Abyssal).
+* **UX:** Feedback tátil (Vibration API) e Mobile-First.
+* **Engine:** Processamento em tempo real via Marked.js.
 
-🕸️ Repositórios e Desenvolvimento
-Pombagiras GitHub – O coração da pesquisa e estética Afro-Brasileira.
+---
 
-Orgulho Trans – Espaço de resistência e tecnologia.
+## 🔮 Meus Portais e Falanges
 
-Alexia Luz de Ferro – Desenvolvimento técnico e automações.
+Conecte-se aos meus ecossistemas de desenvolvimento e pesquisa:
 
-📜 Portais de Conteúdo
-Bio Site - Almas de Pombagira – O hub espiritual e artístico.
+### 🕸️ Desenvolvimento & Código
+* **[GitHub Pombagiras](https://github.com/pombagiras)** - Pesquisa e Iconografia.
+* **[GitHub Orgulho Trans](https://github.com/Orgulho-Trans)** - Identidade e Resistência.
+* **[GitHub Luz de Ferro](https://github.com/alexialuzdeferro)** - Repositórios Técnicos e Sentinel.
 
-Linktree - Rosa de Fogo – Conexões e projetos multimeios.
+### 📜 Presença Digital & Social
+* **[Almas de Pombagira (Bio Site)](https://bio.site/AlmasdePombagira)** - O Hub Central.
+* **[Rosa de Fogo (Linktree)](https://linktr.ee/alexiarosadefogo)** - Redes Sociais e Contato.
+* **[Substack Visceral](https://alexiamelusine.substack.com)** - Textos e Ensaios do Abismo.
 
-Substack – Reflexões viscerais e ensaios do abismo.
+---
+
+## 🖋️ Identidade Técnica
+* **Linguagens:** HTML5, CSS3 (Custom Variables), JavaScript.
+* **Arquitetura:** Supabase, GitHub Actions, Mobile-First.
+* **Foco:** UI/UX Visceral, Automação e Direção de Vídeo por IA.
+
+---
+
+<p align="center">
+  <strong>Laroyé! Pombagira é Mojubá!</strong><br>
+  <em>Desenvolvido com Magia e Tecnologia por Alexia Melusine © 2026</em>
+</p>
